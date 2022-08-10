@@ -57,7 +57,7 @@ Move是一门编程语言，本身是中立的，这里是Move官方的[Github�
 
 ## 搭建Move环境
 
-们这里以Move官方标准库为基础学习Move，先搭建Move的开发环境。
+我们这里以Move官方标准库为基础学习Move，先搭建Move的开发环境。
 
 截止目前，Move还没有一个很好的开发环境。好消息是，比起我学Move的时候，已经非常的方便了（2019年的时候，Move本身还不稳定，完全没有可用的IDE，靠纯文本编辑器写代码，而且错误提示经常不对）。由于Move官方没有可以直接下载的二进制Release版本，我们需要自己手动编译，需要先安装一些依赖。
 
@@ -125,13 +125,13 @@ Move的IDE会做一些语法提示、检查以及高亮显示，帮助我们快�
 
 
 
-## 第一个Move程序：HelloWord
+## 第一个Move程序：HelloWorld
 
 前期的准备完成，我们可以愉快的学习Move了。按照行业惯例，我们写第一个HelloWorld例子。
 
 ### ① Move命令使用
 
-首先，通过前面安装的Move命令，生成一个hello_word的项目：
+首先，通过前面安装的Move命令，生成一个hello_world的项目：
 
 ~~~
 $ move new hello_world
@@ -145,7 +145,7 @@ $ move new hello_world
 
 
 
-### ② 编写HelloWord程序
+### ② 编写HelloWorld程序
 
 这里可以使用IDE引入刚创建的hello_world项目（以Idea为例）。在source文件夹上点击右键，选择`Move File`。生成一个叫hello_world的Script（以后会详细介绍Script的作用）：
 
