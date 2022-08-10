@@ -206,5 +206,5 @@ move sandbox run sources/hello_world.move
 
 今天主要是教大家如何搭建Move的开发环境，并写了第一个Move程序，顺便解答了一些有关Move的疑惑。
 
-我是Move小王子(微博和知乎ID)，欢迎大家关注我并定义“手把手写Move智能合约”专栏，跟我一起学习Move。下期我们将会介绍Move的基础语法。
+欢迎关注tw账号@MoveContract，跟我一起学Move（或者关注知乎"Move小王子"订阅“手把手写Move智能合约”专栏）。下期我们将会介绍Move的基础语法。
 
