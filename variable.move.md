@@ -21,14 +21,15 @@ Move主要有3类基本数据类型：
 * Move没有字符串类型（用二进制来表达嘛）
 * Move没有浮点型（Solidity也没有浮点型，这个其实简单，用整数来代替就可以了），所以在各大Move公链的Framework或者Stdlib中都有一个FixedPoint32.move的模块
 
-另外，Move的基本数据类型还有两个点需要注意的地方：
+另外，Move的基本数据类型还有3个点需要注意的地方：
 
 * 没有负数（这个其实也简单，用一个`bool`型表示符号就可以了）
 * 没有`u256`类型（这个在DeFi里面很重要，记得当时Starcoin跟Libra的Move社区讨论过很久，一直没有通过，最后选择在`u128`上面进行封装）
+* address虽然是专门的地址类型，但是本质上是整型，所以address能跟整型相互转换（Solidity也是这样的）
 
 这是Move的基本数据类型跟其他高级语言不同的地方。
 
-除了上面提到的基本数据类型，数组也是最常用的数据类型，所以这里把数组也一起讲了。Move的数组类型是vector。关于vector类型有两个需要说明的地方：
+除了上面提到的基本数据类型，数组也是最常用的数据类型，所以这里把数组也一起讲了。Move的数组类型是vector。关于vector类型有3个需要说明的地方：
 
 * vector是泛型类型（以后再讲什么是泛型），例如`vector<u8>`或者`vector<address>`等等
 * vector是类型，而std::vector是一个Move模块（不是Move语言本身的），std::vector是一些用来操作vector类型数据的函数。所以一定要注意，vector和std::vector虽然有关联，但不是一个东西
@@ -47,8 +48,8 @@ Move是mini版的Rust（开玩笑），Move借鉴了很多Rust的思想。Move�
 ~~~
 //变量定义
 let _a:u8 = 1;
-let b: u8;
-b = 10;
+let _b: u8;
+_b = 10;
 let c = 2u64;
 
 // 类型强转
@@ -67,13 +68,15 @@ let _flag = true;
 3. 地址变量
 
 ~~~
- let addr1: address;
- addr1 = @{{sender}};// 交易发送者
+ let _addr1: address;
+ _addr1 = @test_addr;
 
 let _addr2 = 0x1;// 确定的地址
 ~~~
 
-这里的sender表示交易的发送者，写合约的时候还不能确定。
+这里的地址类型需要注意一下：test_address是在Move.toml文件里面定义好的地址，通过`@`引用。
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5e5rmg8u8j20b004c3yh.jpg" alt="image-20220821100344880" style="zoom:80%;" />
 
 4. 数组类型
 
@@ -87,7 +90,7 @@ let _boxes: vector<u64> = std::vector::empty<u64>();// 通过std::vector定义ve
 5. 常量
 
 ~~~
-const ADDR:address = 0x2;
+const ADDR: address = @test_addr;
 const FASLE: bool = false;
 ~~~
 
@@ -101,22 +104,22 @@ const FASLE: bool = false;
 
 ~~~
 script {
-    const ADDR : address = 0x2;
+    const ADDR: address = @test_addr;
     const FASLE: bool = false;
 
     fun main() {
         let _a:u8 = 1;
-        let b: u8;
-        b = 10;
+        let _b: u8;
+        _b = 10;
         let c = 2u64;
 
-        let _d = c as u128;
-        let _e = c as u8;
+        let _d = (c as u128);
+        let _e = (c as u8);
 
         let _flag = true;
 
-        let addr1: address;
-        addr1 = @{{sender}};
+        let _addr1: address;
+        _addr1 = @test_addr;
 
         let _addr2 = 0x1;
 
@@ -128,9 +131,15 @@ script {
 
 这里注意一下变量前面的下划线`_`，如果定义的变量在后面没有被使用到，编译的时候会抛错，使用`_`表示你知道后面没被使用，在内存中可以快速回收掉，编译器在编译的时候不会报错。这也是Rust的风格。
 
-<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5do8w9e5rj20s60t80u1.jpg" alt="example" style="zoom:33%;" />
+最后，编译一下代码：
+
+~~~
+move build
+~~~
 
 
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5e5qid72jj20u00xnq51.jpg" alt="move_variable" style="zoom:50%;" />
 
 ## 跟我学Move
 
