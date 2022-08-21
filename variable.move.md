@@ -141,6 +141,8 @@ move build
 
 <img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5e5qid72jj20u00xnq51.jpg" alt="move_variable" style="zoom:50%;" />
 
+
+
 ## 跟我学Move
 
 好了，今天主要是教大家Move的基础数据类型，并且通过基础数据类型定义变量和常量。这里划重点，Move跟其他语言的不同，以及很多Move编程需要注意的细节。
