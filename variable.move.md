@@ -18,7 +18,10 @@ Move主要有3类基本数据类型：
 
 跟其他语言对比，Move的基本数据类型缺少两种类型：
 
-* Move没有字符串类型（用二进制来表达嘛）
+* Move没有字符串类型（更正一下，最新Move已经支持string类型。从定义中我们可以看到存了一个UTF-8的二进制数组）
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5f9don8qpj213n0u0din.jpg" alt="move_string" style="zoom:33%;" />
+
 * Move没有浮点型（Solidity也没有浮点型，这个其实简单，用整数来代替就可以了），所以在各大Move公链的Framework或者Stdlib中都有一个FixedPoint32.move的模块
 
 另外，Move的基本数据类型还有3个点需要注意的地方：
